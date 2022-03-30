@@ -3,23 +3,28 @@
 
 const command = process.argv[2];
 const params = process.argv.slice(3);
+const TodoController =  require('./controller/TodoController');
 // console.log(command);
 // console.log(params);
 
 switch (command) {
-    case 'show':
-        console.log("command show");
+    case 'show':        
+        TodoController.show();
         break;
     case 'add':
-        console.log("command add");
+        // console.log("command add");
+        TodoController.add(params);
         break;
     case 'delete':
-        console.log("command delete");
+        // console.log("command delete");
+        TodoController.delete(params);
         break;
     case 'update':
-        console.log("command update");
+        // console.log("command update");
+        TodoController.update(params);
         break;
     default:
-        console.log("command tidak sesuai");
+        // console.log("command tidak sesuai");
+        TodoController.message("Command tidak tersedia");
         break;
 }

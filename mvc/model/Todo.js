@@ -38,7 +38,21 @@ class Todo {
         let todos = this.getTodos();
         let id = Number(todo[0]);
         todos = todos.filter(todo => todo.id !== id);
-        console.log(todos);
+        // console.log(todos);
+        this.save(todos);
+    }
+
+    static update(todo) {        
+        let todos = this.getTodos();
+        let id = Number(todo[0]);
+        let task = todo[1];
+        todos = todos.map(todo => {
+            if(todo.id === id) {
+                todo.task = task;
+            }
+            return todo;
+        });
+        // console.log(todos);
         this.save(todos);
     }
 }

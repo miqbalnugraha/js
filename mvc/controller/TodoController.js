@@ -8,10 +8,10 @@ class TodoController {
         TodoView.show(todos);
     }
     static add(todo) {
-
+        Todo.add(todo);
     }
     static delete(todo) {
-
+        Todo.delete(todo);
     }
     static update(todo) {
 

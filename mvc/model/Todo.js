@@ -4,7 +4,7 @@ class Todo {
     constructor(id, task, status) {
         this.id = id;
         this.task = task;
-        this.status = status;
+        this.status = status || false;
     }
 
     static getTodos() {
@@ -19,6 +19,27 @@ class Todo {
     static show() {
         let todos = this.getTodos();
         return todos;
+    }
+    static add(todo) {
+        let todos = this.getTodos();
+        let id = todos[todos.length-1].id +1;
+        let task = todo[0];
+        let temp = new Todo(id, task);
+        todos.push(temp);
+        this.save(todos);
+        // console.log(todos);
+    }
+    static save(data) {
+        fs.writeFileSync('./data.json',JSON.stringify(data, null, 3))
+    }
+
+    static delete(todo) {
+        // console.log(todo);
+        let todos = this.getTodos();
+        let id = Number(todo[0]);
+        todos = todos.filter(todo => todo.id !== id);
+        console.log(todos);
+        this.save(todos);
     }
 }
 
